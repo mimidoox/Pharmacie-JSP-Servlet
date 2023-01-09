@@ -21,15 +21,15 @@
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <h1 class="text-center mb-4">Authentification</h1>
-        <form>
+        <form action="AuthentificationController" method="post">
           <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="email" name="email"  aria-describedby="emailHelp">
             <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais votre adresse email avec qui que ce soit.</small>
           </div>
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" name="password" >
           </div>
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="rememberMe">

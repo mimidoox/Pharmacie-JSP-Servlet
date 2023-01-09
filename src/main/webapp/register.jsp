@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!doctype html>
@@ -24,30 +25,37 @@
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<h1 class="text-center mb-4">Inscription</h1>
-				<form>
+				<form action="RegistrationController" method="get">
 					<div class="form-group">
-						<label for="firstName">Prénom</label> <input type="text"
-							class="form-control" id="firstName">
+						<label for="firstName">Prénom</label> <input type="text" name="firstName" class="form-control" id="firstName" value="<%=request.getParameter("firstName") == null ? "" : request.getParameter("firstName")%>">
 					</div>
 					<div class="form-group">
-						<label for="lastName">Nom</label> <input type="text"
-							class="form-control" id="lastName">
+						<label for="lastName">Nom</label> <input type="text" value="<%=request.getParameter("lastName") == null ? "" : request.getParameter("lastName")%>"
+							class="form-control" id="lastName" name="lastName">
 					</div>
 					<div class="form-group">
-						<label for="email">Adresse email</label> <input type="email"
-							class="form-control" id="email" aria-describedby="emailHelp">
+						<label for="email">Adresse email</label> <input type="email" value="<%=request.getParameter("email") == null ? "" : request.getParameter("email")%>"
+							class="form-control" id="email" name="email" aria-describedby="emailHelp">
 						<small id="emailHelp" class="form-text text-muted">Nous ne
 							partagerons jamais votre adresse email avec qui que ce soit.</small>
 					</div>
 					<div class="form-group">
-						<label for="password">Mot de passe</label> <input type="password"
-							class="form-control" id="password">
+						<label for="lastName">Téléphone</label> <input type="text" value="<%=request.getParameter("tel") == null ? "" : request.getParameter("tel")%>"
+							class="form-control" id="tel" name="tel">
+					</div>
+					<div class="form-group">
+						<label for="lastName">Identifiant</label> <input type="text" value="<%=request.getParameter("username") == null ? "" : request.getParameter("username")%>"
+							class="form-control" id="username" name="username">
+					</div>
+					<div class="form-group">
+						<label for="password">Mot de passe</label> <input type="password" name="password1" value="<%=request.getParameter("password1") == null ? "" : request.getParameter("password1")%>"
+							class="form-control" id="password1">
 					</div>
 					<div class="form-group">
 						<label for="passwordConfirm">Confirmez votre mot de passe</label>
-						<input type="password" class="form-control" id="passwordConfirm">
+						<input type="password" class="form-control" id="password2" name="password2" value="<%=request.getParameter("password2") == null ? "" : request.getParameter("password2")%>">
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+					<button id="add" type="submit" class="btn btn-primary btn-block">S'inscrire</button>
 				</form>
 			</div>
 		</div>

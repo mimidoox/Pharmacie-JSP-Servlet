@@ -11,7 +11,7 @@
 				<li class="nav-item active"><a class="nav-link" href="#">Chercher une pharmacie</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="./register.jsp">Inscription</a></li>
-				<li class="nav-item"><a class="nav-link" href="./index.jsp">Connexion</a></li>
+				<li class="nav-item"><a class="nav-link" href="./authentification.jsp">Connexion</a></li>
 			</ul>
 		</div>
 	</nav>

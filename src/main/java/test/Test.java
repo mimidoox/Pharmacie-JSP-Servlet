@@ -5,8 +5,10 @@
  */
 package test;
 
+import entities.Utilisateur;
 import entities.Ville;
 import entities.Zone;
+import service.UtilisateurService;
 import service.VilleService;
 import service.ZoneService;
 
@@ -16,9 +18,10 @@ import service.ZoneService;
  */
 public class Test {
     
+	
 
     public static void main(String[] args) {
-    
+    UtilisateurService us = new UtilisateurService();
     VilleService vs = new VilleService();
     /*
     vs.create(new Ville("MARRAKECH"));
@@ -46,5 +49,7 @@ public class Test {
     for(Zone z : zs.findZonesByVille(vs.findById(1))){
         System.out.println(z.getNom());
     }  
+    
+	
 }
 }
