@@ -1,4 +1,3 @@
-<%@page import="entities.Pharmacien"%>
 <%@page import="entities.Admin"%>
 <%@page import="entities.Utilisateur"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -7,7 +6,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 	<%
-	
       Admin admin = (Admin)session.getAttribute("admin");
  	%>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,7 +36,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active" ><label class="nav-link">Bonjour <%= admin.getNom().toUpperCase()%>,</label></li>
+				<li class="nav-item active"><label class="nav-link">Bonjour <%=admin.getNom().toUpperCase()%></label></li>
 				<li class="nav-item"><a class="nav-link" href="./authentification.jsp">Déconnexion</a></li>
 			</ul>
 		</div>

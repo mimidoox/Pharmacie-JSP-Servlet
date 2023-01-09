@@ -175,15 +175,16 @@ public class UtilisateurService implements IDao<Utilisateur> {
         return utilisateurs;
    
     }
-    public Utilisateur findUserByEmail(String email) {
+    public Utilisateur findUserByEmailPass(String email,String pass) {
 		Session session = null;
         Transaction tx = null;
         Utilisateur user = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            org.hibernate.Query query = session.createQuery("from Utilisateur where login =:login");
+            org.hibernate.Query query = session.createQuery("from Utilisateur where login =:login and password=:pass");
             query.setParameter("login", email);
+            query.setParameter("pass", pass);
             user = (Utilisateur) query.uniqueResult();
             tx.commit();
             return user;

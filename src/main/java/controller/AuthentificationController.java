@@ -39,33 +39,43 @@ public class AuthentificationController extends HttpServlet {
 		if(!request.getParameter("email").equals("") && !request.getParameter("password").equals("")) {
 			String login = request.getParameter("email");
 			String password = request.getParameter("password");
+			
 
-			 if(us.findUserByEmail(login)!=null) {
-				 Utilisateur u = us.findUserByEmail(login);
+			 if(us.findUserByEmailPass(login,password)!=null) {
+				 boolean isAdmin=false;
+				 Utilisateur u = us.findUserByEmailPass(login,password);
 				 if (u.getPassword().equals(password)) {
-					 for(Utilisateur ut : us.findAdmins()) {
+					 HttpSession session = request.getSession();
+					
+					 for(Utilisateur ut:us.findAdmins()) {
 						 if(ut.getId()==u.getId()) {
-							 HttpSession session = request.getSession();
-								session.setAttribute("admin", u);
-								response.sendRedirect("villes.jsp");
-						 }else {
-							 HttpSession session = request.getSession();
+							 	isAdmin=true;
+							 	break;
+								
+								
+						 }
+					 }
+					 		if(isAdmin==false) {
 								session.setAttribute("pharmacien", u);
-								response.sendRedirect("zones.jsp");
+								response.sendRedirect("mespharmacies.jsp");
+								}
+					 		else {
+					 			session.setAttribute("admin", u);
+								response.sendRedirect("dashbord.jsp");
 						 }
 					 }
 						
-					} 
+					} else {
+						response.sendRedirect("authentification.jsp");
+						
 					}
-			 else {
-					response.sendRedirect("authentification.jsp");
 			}
 
 			
 			
 		
 		}
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
