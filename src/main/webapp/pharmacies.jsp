@@ -126,7 +126,7 @@
 				<tr>
 					<td><%=p.getId()%></td>
 					<%PhotoService pss = new PhotoService(); %>
-					<td><img src="images/<%=pss.findByPharma(p).getUrl() %>" style="width:75px;height:75px;"></td>
+					<td><img src="images/<%=pss.findByPharma(p).getUrl()%>" style="width:75px;height:75px;"></td>
 					<td><%=p.getNom()%></td>
 					<td><%=p.getAdresse() %></td>
 					<td><%=p.getZone().getVille() %></td>

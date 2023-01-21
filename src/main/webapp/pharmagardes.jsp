@@ -2,6 +2,7 @@
 <%@page import="entities.Garde"%>
 <%@page import="entities.Pharmacie"%>
 <%@page import="service.GardeService"%>
+<%@page import="service.PhotoService"%>
 <%@page import="service.PharmacieService"%>
 <%@page import="entities.PharmacieDeGarde"%>
 <%@page import="service.PharmacieDeGardeService"%>
@@ -105,7 +106,9 @@
 					
 				%>
 				<tr>
-				  	<td><img src="images/"<%=pdg.getPharmacie().getPhotos().get(0).getUrl()%> style="width:75px;height:75px;"></td> 
+				<% PhotoService ppp = new PhotoService(); 
+				%>
+				  	<td><img src="images/<%=ppp.findByPharma(pdg.getPharmacie()).getUrl()%>" style="width:75px;height:75px;"></td> 
 					<td><%=pdg.getPharmacie()%></td>
 					<td><%=pdg.getGarde()%></td>
 					<td><%=pdg.getPk().getDateDebut() %></td>
