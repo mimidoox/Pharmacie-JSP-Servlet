@@ -39,6 +39,12 @@ public class PharmacieDeGarde {
         this.pharmacie = pharmacie;
         this.garde = garde;
     }
+    public PharmacieDeGarde(  Date dateFin, Pharmacie pharmacie, Garde garde) {
+        
+        this.dateFin = dateFin;
+        this.pharmacie = pharmacie;
+        this.garde = garde;
+    }
 
     public PharmacieDeGardePK getPk() {
         return pk;

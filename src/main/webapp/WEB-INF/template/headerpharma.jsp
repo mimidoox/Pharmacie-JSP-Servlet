@@ -25,7 +25,7 @@
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link" href="./dashbord.jsp">Ajouter pharmacie</a>
+        <a class="nav-link" href="./ajoutPharma.jsp">Ajouter pharmacie</a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="./mespharmacies.jsp">Mes pharmacies</a>

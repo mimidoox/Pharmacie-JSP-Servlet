@@ -7,6 +7,7 @@ package service;
 
 import dao.IDao;
 import entities.Pharmacie;
+import entities.Pharmacien;
 import entities.Zone;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -139,7 +140,7 @@ public class PharmacieService implements IDao<Pharmacie> {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
             Query query = session.getNamedQuery("findPharmaciesByZone");
-            query.setParameter("v", v.getId());
+            query.setParameter("id", v.getId());
             pharmacies = query.list();
             tx.commit();
         } catch (HibernateException e) {
@@ -152,5 +153,26 @@ public class PharmacieService implements IDao<Pharmacie> {
         }
         return pharmacies;
     }
+     public List<Pharmacie> findPharmaciesByOwner(Pharmacien p){
+         Session session = null;
+         Transaction tx = null;
+         List<Pharmacie> pharmacies = null;
+         try {
+             session = HibernateUtil.getSessionFactory().openSession();
+             tx = session.beginTransaction();
+             Query query = session.getNamedQuery("findPharmaciesByOwner");
+             query.setParameter("id", p.getId());
+             pharmacies = query.list();
+             tx.commit();
+         } catch (HibernateException e) {
+             if (tx != null) {
+                 tx.rollback();
+             }
+         }finally{
+             if(session != null)
+                 session.close();
+         }
+         return pharmacies;
+     }
 
 }

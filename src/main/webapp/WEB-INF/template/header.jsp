@@ -24,8 +24,8 @@
           <a class="nav-link" href="./gardes.jsp">Garde</a>
           <a class="nav-link" href="./pharmaciens.jsp">Pharmacien</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item nav-link disabled" href="#">Pharmacie</a>
-          <a class="dropdown-item nav-link disabled" href="#">Pharmacie de garde</a>
+          <a class="dropdown-item nav-link" href="./pharmacies.jsp">Pharmacie</a>
+          <a class="dropdown-item nav-link" href="./pharmagardes.jsp">Pharmacie de garde</a>
         </div>
       </li>
       <li class="nav-item ">

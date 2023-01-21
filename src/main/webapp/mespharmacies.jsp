@@ -11,6 +11,6 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/headerpharma.jsp" />
-<h1>yoooo</h1>
+
 </body>
 </html>

@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
 /**
@@ -21,7 +23,12 @@ import org.hibernate.annotations.NamedQuery;
  * @author DELL
  */
 @Entity
-@NamedQuery(name = "findPharmaciesByZone", query = "from Pharmacie where Zone_id= :id")
+@NamedQueries(value = { 
+		@NamedQuery(name = "findPharmaciesByZone", query = "from Pharmacie where Zone_id= :id"), 
+		@NamedQuery(name = "findPharmaciesByOwner", query = "from Pharmacie where Pharmacien_id= :id")
+		})
+
+
 public class Pharmacie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +57,15 @@ public class Pharmacie {
         this.zone = zone;
         this.pharmacien = pharmacien;
         this.photos = photos;
+    }
+    public Pharmacie(String nom, String adresse, double latitude, double longitude, Zone zone, Pharmacien pharmacien) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.zone = zone;
+        this.pharmacien = pharmacien;
+        
     }
 
 
@@ -122,7 +138,7 @@ public class Pharmacie {
 
     @Override
     public String toString() {
-        return "Pharmacie "+ nom;
+        return  nom;
     }
     
     

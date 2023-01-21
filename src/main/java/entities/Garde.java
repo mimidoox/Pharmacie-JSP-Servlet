@@ -47,7 +47,7 @@ public class Garde {
 
     @Override
     public String toString() {
-        return "Garde{" + "id=" + id + ", type=" + type + '}';
+        return type ;
     }
     
     

@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import service.UtilisateurService;
+import util.Utils;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,10 +42,10 @@ public class AuthentificationController extends HttpServlet {
 			String password = request.getParameter("password");
 			
 
-			 if(us.findUserByEmailPass(login,password)!=null) {
+			 if(us.findUserByEmailPass(login,Utils.MD5(password))!=null) {
 				 boolean isAdmin=false;
-				 Utilisateur u = us.findUserByEmailPass(login,password);
-				 if (u.getPassword().equals(password)) {
+				 Utilisateur u = us.findUserByEmailPass(login,Utils.MD5(password));
+				 if (u.getPassword().equals(Utils.MD5(password))) {
 					 HttpSession session = request.getSession();
 					
 					 for(Utilisateur ut:us.findAdmins()) {

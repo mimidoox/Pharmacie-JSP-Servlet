@@ -1,50 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package service;
 
-import dao.IDao;
-import entities.Ville;
-import entities.Zone;
 import java.util.List;
+
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import dao.IDao;
+import entities.Garde;
+import entities.Pharmacie;
+import entities.Photo;
 import util.HibernateUtil;
 
-/**
- *
- * @author DELL
- */
-public class ZoneService implements IDao<Zone> {
+public class PhotoService implements IDao<Photo> {
 
-    @Override
-    public boolean create(Zone o) {
-        Session session = null;
-        Transaction tx = null;
-        try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            session.save(o);
-            tx.commit();
-            return true;
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        }finally{
-            if(session != null)
-                session.close();
-        }
-        return false;
-    }
+	@Override
+	public boolean create(Photo o) {
+		 Session session = null;
+	        Transaction tx = null;
+	        try {
+	            session = HibernateUtil.getSessionFactory().openSession();
+	            tx = session.beginTransaction();
+	            session.save(o);
+	            tx.commit();
+	            return true;
+	        } catch (HibernateException e) {
+	            if (tx != null) {
+	                tx.rollback();
+	            }
+	        }finally{
+	            if(session != null)
+	                session.close();
+	        }
+	        return false;
+	}
 
-    @Override
-    public boolean update(Zone o) {
-        Session session = null;
+	@Override
+	public boolean update(Photo o) {
+		Session session = null;
         Transaction tx = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -61,12 +54,11 @@ public class ZoneService implements IDao<Zone> {
                 session.close();
         }
         return false;
-    }
+	}
 
-    @Override
-    public boolean delete(Zone o
-    ) {
-        Session session = null;
+	@Override
+	public boolean delete(Photo o) {
+		Session session = null;
         Transaction tx = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -83,20 +75,19 @@ public class ZoneService implements IDao<Zone> {
                 session.close();
         }
         return false;
-    }
+	}
 
-    @Override
-    public Zone findById(int id
-    ) {
-        Session session = null;
+	@Override
+	public Photo findById(int id) {
+		Session session = null;
         Transaction tx = null;
-        Zone zone = null;
+       Photo photo = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            zone = (Zone) session.get(Zone.class, id);
+            photo = (Photo) session.get(Photo.class, id);
             tx.commit();
-            return zone;
+            return photo;
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -106,18 +97,17 @@ public class ZoneService implements IDao<Zone> {
                 session.close();
         }
         return null;
-    }
+	}
 
-    @Override
-    public List<Zone> findAll() {
-        Session session = null;
+	@Override
+	public List<Photo> findAll() {
+		Session session = null;
         Transaction tx = null;
-        Zone zone = null;
-        List<Zone> zones = null;
+        List<Photo> photos = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            zones = session.createQuery("from Zone").list();
+            photos = session.createQuery("from Photo").list();
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -127,22 +117,17 @@ public class ZoneService implements IDao<Zone> {
             if(session != null)
                 session.close();
         }
-        return zones;
-   
-    }
-    
-    public List<Zone> findZonesByVille(Ville v){
-        Session session = null;
+        return photos;
+	}
+	public Photo findByPharma(Pharmacie ph) {
+		Session session = null;
         Transaction tx = null;
-        List<Zone> zones = null;
+        Photo photos = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            Query query = session.getNamedQuery("findZonesByVille");
-            query.setParameter("v", v.getId());
-            zones = query.list();
+            photos = (Photo) session.createQuery("from Photo where pharmacie= :id ").setParameter("id", ph).uniqueResult();
             tx.commit();
-            return zones;
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -151,7 +136,7 @@ public class ZoneService implements IDao<Zone> {
             if(session != null)
                 session.close();
         }
-        return null;
-    }
+        return photos;
+	}
 
 }

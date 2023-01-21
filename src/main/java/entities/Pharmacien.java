@@ -77,6 +77,11 @@ public class Pharmacien extends Utilisateur{
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
+
+	@Override
+	public String toString() {
+		return  nom + " " + prenom ;
+	}
     
     
     

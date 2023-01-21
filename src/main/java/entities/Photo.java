@@ -33,7 +33,13 @@ public class Photo {
         this.url = url;
     }
 
-    public int getId() {
+    public Photo(String url, Pharmacie pharmacie) {
+		
+		this.url = url;
+		this.pharmacie = pharmacie;
+	}
+
+	public int getId() {
         return id;
     }
 

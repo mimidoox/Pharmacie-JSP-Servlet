@@ -7,6 +7,8 @@ package service;
 
 import dao.IDao;
 import entities.PharmacieDeGarde;
+import entities.PharmacieDeGardePK;
+
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -128,5 +130,26 @@ public class PharmacieDeGardeService implements IDao<PharmacieDeGarde> {
         return pharmaciedegardes;
    
     }
+    public PharmacieDeGarde findByPk(PharmacieDeGardePK id
+    	    ) {
+    	        Session session = null;
+    	        Transaction tx = null;
+    	        PharmacieDeGarde pharmaciedegarde = null;
+    	        try {
+    	            session = HibernateUtil.getSessionFactory().openSession();
+    	            tx = session.beginTransaction();
+    	            pharmaciedegarde = (PharmacieDeGarde) session.get(PharmacieDeGarde.class, id);
+    	            tx.commit();
+    	            return pharmaciedegarde;
+    	        } catch (HibernateException e) {
+    	            if (tx != null) {
+    	                tx.rollback();
+    	            }
+    	        }finally{
+    	            if(session != null)
+    	                session.close();
+    	        }
+    	        return null;
+    	    }
 
 }

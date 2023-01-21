@@ -5,12 +5,14 @@
  */
 package test;
 
+import entities.Admin;
 import entities.Utilisateur;
 import entities.Ville;
 import entities.Zone;
 import service.UtilisateurService;
 import service.VilleService;
 import service.ZoneService;
+import util.Utils;
 
 /**
  *
@@ -19,9 +21,12 @@ import service.ZoneService;
 public class Test {
     
 	
-
+	
+	
     public static void main(String[] args) {
     UtilisateurService us = new UtilisateurService();
+    Utilisateur u = new Admin("ADMIN","ADMIN","0666666666","admin",Utils.MD5("admin"));
+    us.create(u);
     VilleService vs = new VilleService();
     /*
     vs.create(new Ville("MARRAKECH"));

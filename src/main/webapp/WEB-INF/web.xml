@@ -84,4 +84,44 @@
     <servlet-name>DeconnexionController</servlet-name>
     <url-pattern>/DeconnexionController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PharmacieController</display-name>
+    <servlet-name>PharmacieController</servlet-name>
+    <servlet-class>controller.PharmacieController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PharmacieController</servlet-name>
+    <url-pattern>/PharmacieController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PharmaGardeController</display-name>
+    <servlet-name>PharmaGardeController</servlet-name>
+    <servlet-class>controller.PharmaGardeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PharmaGardeController</servlet-name>
+    <url-pattern>/PharmaGardeController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ZoneByVilleController</display-name>
+    <servlet-name>ZoneByVilleController</servlet-name>
+    <servlet-class>controller.ZoneByVilleController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ZoneByVilleController</servlet-name>
+    <url-pattern>/ZoneByVilleController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ajouPharmaController</display-name>
+    <servlet-name>ajouPharmaController</servlet-name>
+    <servlet-class>controller.ajouPharmaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ajouPharmaController</servlet-name>
+    <url-pattern>/ajouPharmaController</url-pattern>
+  </servlet-mapping>
 </web-app>
